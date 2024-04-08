@@ -4,9 +4,9 @@ import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.jpaspringdata.entity.User;
 
-import java.time.LocalDateTime;
-import java.util.Objects;
+
 
 @Entity
 @Data
@@ -21,5 +21,9 @@ public class ToDoEntity {
 
 //    @Column(columnDefinition = "varchar(255 default 'email@email.com'")
 //    private String email;
+
+    @ManyToOne
+    @JoinColumn(name = "to_do_author_id")
+    private User toDoAuthor;
 
 }
