@@ -1,9 +1,6 @@
 package org.jpaspringdata.entity;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -21,5 +18,8 @@ public class ToDoEntity {
     private Integer id;
     private String name;
     private String description;
+
+//    @Column(columnDefinition = "varchar(255 default 'email@email.com'")
+//    private String email;
 
 }

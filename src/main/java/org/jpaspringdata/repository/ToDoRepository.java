@@ -14,7 +14,6 @@ import java.util.List;
 @Repository
 public interface ToDoRepository extends JpaRepository<ToDoEntity, Integer> {
 
-
     public List<ToDoEntity> findByName(String name);
     public List<ToDoEntity> findByDescription(String description);
 
@@ -23,7 +22,6 @@ public interface ToDoRepository extends JpaRepository<ToDoEntity, Integer> {
                 .filter(toDoEntity -> toDoEntity.getName() != null && toDoEntity.getName().length() > minLength)
                 .toList();
     }
-
 
     @Query("SELECT t FROM ToDoEntity t WHERE LENGTH(t.name) > 10 AND t.id > :id")
     public List<ToDoEntity> findToDoWithNameLengthLongerThanAndIdGreaterThan(@Param("id") Integer id);
