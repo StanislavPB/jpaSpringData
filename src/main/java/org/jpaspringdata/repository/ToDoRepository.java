@@ -2,15 +2,17 @@ package org.jpaspringdata.repository;
 
 
 import org.jpaspringdata.entity.ToDoEntity;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.repository.CrudRepository;
+import org.springframework.stereotype.Repository;
 
 import java.util.List;
-import java.util.Optional;
 
-public interface ToDoRepository {
-    ToDoEntity save(ToDoEntity entity);
+@Repository
+public interface ToDoRepository extends JpaRepository<ToDoEntity, Integer> {
 
-    List<ToDoEntity> findAll();
 
-    Optional<ToDoEntity> findById(Integer id);
+    public List<ToDoEntity> findByName(String name);
+    public List<ToDoEntity> findByDescription(String description);
 
 }

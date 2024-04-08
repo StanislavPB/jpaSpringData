@@ -2,6 +2,8 @@ package org.jpaspringdata.service;
 
 import org.jpaspringdata.entity.ToDoEntity;
 import org.jpaspringdata.repository.ToDoRepository;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import java.util.Optional;
@@ -16,10 +18,10 @@ public class FindToDoById {
         this.repository = repository;
     }
 
-    public ToDoEntity findById(Integer id){
+    public ResponseEntity<ToDoEntity> findById(Integer id){
         Optional<ToDoEntity> optionalToDoEntity = repository.findById(id);
         if (optionalToDoEntity.isPresent()) {
-            return optionalToDoEntity.get();
+            return new ResponseEntity<>(optionalToDoEntity.get(), HttpStatus.OK);
         } else {
             throw new IllegalStateException("Entity with ID = " + id + " not found!");
         }
